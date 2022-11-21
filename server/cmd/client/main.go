@@ -16,11 +16,18 @@ func main() {
 		Msg: &nerdv1.SolveRequest{
 			Rows: 3,
 			Cols: 4,
-			Grid: []string{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"},
+			Grid: []string{
+				"1", "2", "3", "4",
+				"5", "6", "7", "8",
+				"9", "10", "11", "12"},
+			BufferSize:    6,
+			DesiredString: []string{"8", "12", "11", "3"},
 		},
 	})
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("%+v\n", res)
+	for _, index := range res.Msg.SolutionIndexes {
+		fmt.Printf("X:%d Y:%d\n", index.X, index.Y)
+	}
 }
