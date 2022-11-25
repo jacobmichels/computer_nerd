@@ -39,7 +39,7 @@ export const SettingsButton: React.FC<SettingsButtonProps> = (props) => {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
+          <ModalHeader>Settings</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <Text>Hello World!</Text>
@@ -49,7 +49,6 @@ export const SettingsButton: React.FC<SettingsButtonProps> = (props) => {
             <Button colorScheme="blue" mr={3} onClick={onClose}>
               Close
             </Button>
-            <Button variant="ghost">Secondary Action</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

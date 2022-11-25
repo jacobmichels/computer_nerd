@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/jacobmichels/computer_nerd/gen/proto/v1/nerdv1connect"
+	"github.com/rs/cors"
 	"github.com/rs/zerolog/log"
 	"golang.org/x/net/http2"
 	"golang.org/x/net/http2/h2c"
@@ -20,8 +21,10 @@ func StartServer(s *SolverService) {
 	path, handler := nerdv1connect.NewSolveServiceHandler(s)
 	mux.Handle(path, handler)
 
+	corsMux := cors.Default().Handler(mux)
+
 	log.Info().Str("port", port).Msg("Starting server")
-	if err := http.ListenAndServe(":"+port, h2c.NewHandler(mux, &http2.Server{})); err != nil {
+	if err := http.ListenAndServe(":"+port, h2c.NewHandler(corsMux, &http2.Server{})); err != nil {
 		log.Err(err).Msg("http server error")
 	}
 }

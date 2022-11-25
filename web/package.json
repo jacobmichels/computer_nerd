@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@bufbuild/connect-web": "^0.3.2",
+    "@bufbuild/protobuf": "^0.3.0",
     "@chakra-ui/icons": "^2.0.12",
     "@chakra-ui/react": "^2.4.1",
     "@emotion/react": "^11.10.5",
@@ -43,5 +45,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@bufbuild/protoc-gen-connect-web": "^0.3.2",
+    "@bufbuild/protoc-gen-es": "^0.3.0"
   }
 }

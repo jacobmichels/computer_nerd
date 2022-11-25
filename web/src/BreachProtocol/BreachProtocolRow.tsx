@@ -1,17 +1,17 @@
-import { BreachProtocolSelect } from "./BreachProtocolSelect";
+import { BreachProtocolGridSelect } from "./BreachProtocolGridSelect";
 
 interface BreachProtocolRowProps {
   cols: number;
+  row: number;
 }
 
 export const BreachProtocolRow: React.FC<BreachProtocolRowProps> = ({
   cols,
+  row,
 }) => {
-  return (
-    <>
-      {[...Array(cols)].map((_, i) => (
-        <BreachProtocolSelect key={i} />
-      ))}
-    </>
-  );
+  let selects = [];
+  for (let i = 0; i < cols; i++) {
+    selects.push(<BreachProtocolGridSelect key={i} col={i} row={row} />);
+  }
+  return <>{selects}</>;
 };

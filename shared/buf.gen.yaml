@@ -6,3 +6,11 @@ plugins:
   - name: connect-go
     out: ../server/gen
     opt: paths=source_relative
+  - name: es
+    path: ../web/node_modules/@bufbuild/protoc-gen-es/bin/protoc-gen-es
+    out: ../web/src/gen
+    opt: target=js+dts
+  - name: connect-web
+    path: ../web/node_modules/@bufbuild/protoc-gen-connect-web/bin/protoc-gen-connect-web
+    out: ../web/src/gen
+    opt: target=ts
