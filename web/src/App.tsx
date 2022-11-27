@@ -10,7 +10,6 @@ import { atom, RecoilRoot, selector } from "recoil";
 import { BreachProtocolGrid } from "./BreachProtocol/BreachProtocolGrid";
 import { ClearButton } from "./ClearButton";
 import { ColorModeSwitcher } from "./ColorModeSwitcher";
-import { SettingsButton } from "./SettingsButton";
 import { SolveButton } from "./SolveButton";
 import { SolveParameters } from "./SolveParameters";
 import { StatusText } from "./StatusText";
@@ -79,7 +78,6 @@ export const App = () => (
         <Grid p={3}>
           <HStack justifySelf="flex-end">
             <ColorModeSwitcher />
-            <SettingsButton />
           </HStack>
 
           <VStack spacing={8}>
