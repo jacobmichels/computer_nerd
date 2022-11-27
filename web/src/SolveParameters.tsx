@@ -9,13 +9,12 @@ import {
   NumberInputField,
   NumberInputStepper,
 } from "@chakra-ui/react";
-import { useState } from "react";
 import { useRecoilState } from "recoil";
-import { desiredStringState } from "./App";
+import { bufferSizeState, desiredStringState } from "./App";
 import { BreachProtocolDesiredSelect } from "./BreachProtocol/BreachProtocolDesiredSelect";
 
 export const SolveParameters = () => {
-  const [bufferSize, setBufferSize] = useState(4);
+  let [bufferSize, setBufferSize] = useRecoilState(bufferSizeState);
   const [, setDesiredStringState] = useRecoilState(desiredStringState);
 
   return (
@@ -26,7 +25,7 @@ export const SolveParameters = () => {
           <NumberInput
             max={10}
             min={1}
-            defaultValue={bufferSize}
+            value={bufferSize}
             onChange={(value) => {
               setBufferSize(parseInt(value));
               setDesiredStringState((oldDesired) => {

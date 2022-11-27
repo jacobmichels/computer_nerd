@@ -9,11 +9,12 @@ interface BreachProtocolDesiredSelectProps {
 export const BreachProtocolDesiredSelect: React.FC<
   BreachProtocolDesiredSelectProps
 > = ({ index }) => {
-  const [, desiredSetter] = useRecoilState(desiredStringState);
+  const [desired, desiredSetter] = useRecoilState(desiredStringState);
 
   return (
     <>
       <Select
+        value={desired[index]}
         onChange={(e) => {
           desiredSetter((oldState) => {
             let newState: string[] = JSON.parse(JSON.stringify(oldState));

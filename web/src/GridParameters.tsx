@@ -10,11 +10,12 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { colsCount, gridState } from "./App";
+import { colsCount, gridState, rowsCount } from "./App";
 
 export const GridParameters: React.FC = () => {
   const [, gridSetter] = useRecoilState(gridState);
   const cols = useRecoilValue(colsCount);
+  const rows = useRecoilValue(rowsCount);
 
   return (
     <HStack>
@@ -23,7 +24,7 @@ export const GridParameters: React.FC = () => {
         <NumberInput
           max={10}
           min={3}
-          defaultValue={4}
+          value={rows}
           onChange={(value) => {
             gridSetter((oldGrid) => {
               let newGrid: string[][] = JSON.parse(JSON.stringify(oldGrid));
@@ -50,7 +51,7 @@ export const GridParameters: React.FC = () => {
         <NumberInput
           max={10}
           min={3}
-          defaultValue={4}
+          value={cols}
           onChange={(value) => {
             gridSetter((oldGrid) => {
               let newGrid: string[][] = JSON.parse(JSON.stringify(oldGrid));

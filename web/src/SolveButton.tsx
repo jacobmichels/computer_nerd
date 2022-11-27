@@ -6,17 +6,21 @@ import {
   createConnectTransport,
 } from "@bufbuild/connect-web";
 import { SolveRequest } from "./gen/proto/v1/nerd_pb";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import {
   bufferSizeState,
   colsCount,
   compressedGrid,
   desiredStringState,
+  GridCell,
+  gridState,
   rowsCount,
+  statusMessage,
 } from "./App";
 
 const transport = createConnectTransport({
   baseUrl: "http://localhost:8080",
+  useBinaryFormat: true,
 });
 const client = createPromiseClient(SolveService, transport);
 
@@ -27,9 +31,14 @@ export const SolveButton = () => {
   const rows = useRecoilValue(rowsCount);
   const desiredString: string[] = useRecoilValue(desiredStringState);
   const grid: string[] = useRecoilValue(compressedGrid);
+  const [fullGrid, setFullGrid] = useRecoilState(gridState);
+  const setStatus = useSetRecoilState(statusMessage);
 
   const submit = async () => {
-    // setIsLoading(true);
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    });
     let response = await client.solve(
       new SolveRequest({
         bufferSize: bufferSize,
@@ -39,8 +48,25 @@ export const SolveButton = () => {
         grid: grid,
       })
     );
+    setIsLoading(false);
 
     console.log(response);
+
+    if (response.possible) {
+      setStatus("Solution found!");
+      let gridCopy: GridCell[][] = JSON.parse(JSON.stringify(fullGrid));
+      for (const row of gridCopy) {
+        for (const cell of row) {
+          cell.isHighlighted = false;
+        }
+      }
+      for (const { x, y } of response.solutionIndexes) {
+        gridCopy[y][x].isHighlighted = true;
+      }
+      setFullGrid(gridCopy);
+    } else {
+      setStatus("No solution found.");
+    }
   };
 
   return (

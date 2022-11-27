@@ -8,32 +8,38 @@ import {
 } from "@chakra-ui/react";
 import { atom, RecoilRoot, selector } from "recoil";
 import { BreachProtocolGrid } from "./BreachProtocol/BreachProtocolGrid";
+import { ClearButton } from "./ClearButton";
 import { ColorModeSwitcher } from "./ColorModeSwitcher";
 import { SettingsButton } from "./SettingsButton";
 import { SolveButton } from "./SolveButton";
 import { SolveParameters } from "./SolveParameters";
+import { StatusText } from "./StatusText";
 import { Title } from "./Title";
 
+export interface GridCell {
+  value: string;
+  isHighlighted: boolean;
+}
 export const gridState = atom({
   key: "gridState",
-  default: Array(4).fill(Array(4).fill("BD")),
+  default: Array(4).fill(Array(4).fill({ value: "BD", isHighlighted: false })),
 });
 
 export const compressedGrid = selector({
   key: "compressedGrid",
   get: ({ get }) => {
-    let grid = get(gridState);
+    let grid: GridCell[][] = get(gridState);
     let compressedGrid: string[] = [];
     for (let row of grid) {
       for (let col of row) {
-        compressedGrid.push(col);
+        compressedGrid.push(col.value);
       }
     }
     return compressedGrid;
   },
 });
 
-export const desiredStringState = atom({
+export const desiredStringState = atom<string[]>({
   key: "desiredStringState",
   default: Array(4).fill("BD"),
 });
@@ -53,8 +59,17 @@ export const rowsCount = selector({
 export const colsCount = selector({
   key: "colsCount",
   get: ({ get }) => {
-    return get(gridState)[0].length;
+    let len: number = get(gridState)[0].length;
+    return len;
   },
+});
+
+export const defaultStatusMessage =
+  "Click solve to attempt to find the desired pattern in the grid.";
+
+export const statusMessage = atom({
+  key: "statusMessage",
+  default: defaultStatusMessage,
 });
 
 export const App = () => (
@@ -69,9 +84,13 @@ export const App = () => (
 
           <VStack spacing={8}>
             <Title />
+            <StatusText />
             <BreachProtocolGrid />
             <SolveParameters />
-            <SolveButton />
+            <HStack>
+              <SolveButton />
+              <ClearButton />
+            </HStack>
           </VStack>
         </Grid>
       </Box>
