@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/computer_nerd/static/js/main.340063d6.js",
+    "static/js/787.d1d4a2c2.chunk.js": "/computer_nerd/static/js/787.d1d4a2c2.chunk.js",
+    "index.html": "/computer_nerd/index.html",
+    "main.340063d6.js.map": "/computer_nerd/static/js/main.340063d6.js.map",
+    "787.d1d4a2c2.chunk.js.map": "/computer_nerd/static/js/787.d1d4a2c2.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.340063d6.js"
+  ]
+}
