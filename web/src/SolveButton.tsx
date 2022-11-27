@@ -19,7 +19,7 @@ import {
 } from "./App";
 
 const transport = createConnectTransport({
-  baseUrl: "http://localhost:8080",
+  baseUrl: "https://computer-nerd-gwksazschq-ue.a.run.app/",
   useBinaryFormat: true,
 });
 const client = createPromiseClient(SolveService, transport);
