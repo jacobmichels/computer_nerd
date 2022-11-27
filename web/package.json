@@ -2,6 +2,7 @@
   "name": "web",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://jacobmichels.github.io/computer_nerd",
   "dependencies": {
     "@bufbuild/connect-web": "^0.3.2",
     "@bufbuild/protobuf": "^0.3.0",
@@ -17,6 +18,7 @@
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.9",
     "framer-motion": "^6.5.1",
+    "gh-pages": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^3.11.0",
@@ -29,7 +31,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
