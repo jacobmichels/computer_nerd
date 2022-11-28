@@ -6,6 +6,7 @@ import {
   theme,
   VStack,
 } from "@chakra-ui/react";
+import { useEffect } from "react";
 import { atom, RecoilRoot, selector } from "recoil";
 import { BreachProtocolGrid } from "./BreachProtocol/BreachProtocolGrid";
 import { ClearButton } from "./ClearButton";
@@ -71,27 +72,33 @@ export const statusMessage = atom({
   default: defaultStatusMessage,
 });
 
-export const App = () => (
-  <RecoilRoot>
-    <ChakraProvider theme={theme}>
-      <Box textAlign="center" fontSize="xl">
-        <Grid p={3}>
-          <HStack justifySelf="flex-end">
-            <ColorModeSwitcher />
-          </HStack>
+export const App = () => {
+  useEffect(() => {
+    document.title = "computer_nerd";
+  }, []);
 
-          <VStack spacing={8}>
-            <Title />
-            <StatusText />
-            <BreachProtocolGrid />
-            <SolveParameters />
-            <HStack>
-              <SolveButton />
-              <ClearButton />
+  return (
+    <RecoilRoot>
+      <ChakraProvider theme={theme}>
+        <Box textAlign="center" fontSize="xl">
+          <Grid p={3}>
+            <HStack justifySelf="flex-end">
+              <ColorModeSwitcher />
             </HStack>
-          </VStack>
-        </Grid>
-      </Box>
-    </ChakraProvider>
-  </RecoilRoot>
-);
+
+            <VStack spacing={8}>
+              <Title />
+              <StatusText />
+              <BreachProtocolGrid />
+              <SolveParameters />
+              <HStack>
+                <SolveButton />
+                <ClearButton />
+              </HStack>
+            </VStack>
+          </Grid>
+        </Box>
+      </ChakraProvider>
+    </RecoilRoot>
+  );
+};
