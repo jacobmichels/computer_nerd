@@ -31,6 +31,6 @@ jobs:
         with:
           service: ${{ secrets.GCP_CLOUDRUN_SERVICE }}
           region: ${{ secrets.GCP_CLOUDRUN_REGION }}
-          image: gcr.io/${{ secrets.GCP_PROJECT }}/computer-nerd:latest
+          image: gcr.io/${{ secrets.GCP_PROJECT }}/computer_nerd:latest
 
   # deploy-frontend:
