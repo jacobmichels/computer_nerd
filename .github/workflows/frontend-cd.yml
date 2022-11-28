@@ -1,0 +1,25 @@
+name: frontend-CD
+
+on:
+  repository_dispatch:
+    types: ["frontend_deploy_trigger"]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 19.1.0
+      - name: Build site
+        run: |-
+          cd web
+          npm install
+          npm run build
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1.0.5
+        with:
+          path: web/build/
+      - name: Deploy to Pages
+        uses: actions/deploy-pages@v1

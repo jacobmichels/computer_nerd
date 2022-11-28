@@ -2,7 +2,7 @@ name: backend-CD
 
 on:
   repository_dispatch:
-    types: ["deploy_trigger"]
+    types: ["backend_deploy_trigger"]
 
 jobs:
   deploy:

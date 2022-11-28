@@ -57,4 +57,4 @@ jobs:
       - name: Trigger CD workflow
         uses: peter-evans/repository-dispatch@v2
         with:
-          event-type: deploy_trigger
+          event-type: backend_deploy_trigger
