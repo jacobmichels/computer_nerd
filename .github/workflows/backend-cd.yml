@@ -1,11 +1,11 @@
-name: CD
+name: backend-CD
 
 on:
   repository_dispatch:
     types: ["deploy_trigger"]
 
 jobs:
-  deploy-backend:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -32,5 +32,3 @@ jobs:
           service: ${{ secrets.GCP_CLOUDRUN_SERVICE }}
           region: ${{ secrets.GCP_CLOUDRUN_REGION }}
           image: gcr.io/${{ secrets.GCP_PROJECT }}/computer_nerd:latest
-
-  # deploy-frontend:
