@@ -18,6 +18,7 @@ func (s *SolverService) Solve(ctx context.Context, req *connect.Request[nerdv1.S
 
 	if len(req.Msg.Grid) != int(req.Msg.Rows)*int(req.Msg.Cols) {
 		log.Warn().Msg("unexpected length of input grid")
+
 		return nil, errors.New("bad array length")
 	}
 
