@@ -4,6 +4,9 @@ on:
   repository_dispatch:
     types: ["frontend_deploy_trigger"]
 
+permissions:
+  id-token: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
