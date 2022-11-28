@@ -22,4 +22,4 @@ The frontend gets a grid, buffer size, and desired path from the user and sends 
 
 ## Todo
 
-- set up ci (lint, build, build release binaries, build dockerfile, deploy to cloud run, deploy to gh-pages)
+- set up ci (build frontend, build release binaries, deploy to gh-pages, remove old images from artifact registry)
