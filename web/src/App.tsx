@@ -85,7 +85,6 @@ export const App = () => {
             <HStack justifySelf="flex-end">
               <ColorModeSwitcher />
             </HStack>
-
             <VStack spacing={8}>
               <Title />
               <StatusText />
