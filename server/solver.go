@@ -57,10 +57,12 @@ func reshape(array []string, rows, cols int32) [][]string {
 	grid[0] = make([]string, 0, cols)
 
 	currRow := 0
+
 	for i, val := range array {
 		if i != 0 && i%int(cols) == 0 {
 			currRow++
 		}
+
 		grid[currRow] = append(grid[currRow], val)
 	}
 

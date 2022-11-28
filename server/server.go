@@ -24,6 +24,7 @@ func StartServer(s *SolverService) {
 	corsMux := cors.Default().Handler(mux)
 
 	log.Info().Str("port", port).Msg("Starting server")
+
 	if err := http.ListenAndServe(":"+port, h2c.NewHandler(corsMux, &http2.Server{})); err != nil {
 		log.Err(err).Msg("http server error")
 	}

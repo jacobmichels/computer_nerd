@@ -12,6 +12,7 @@ func main() {
 	if stdoutIsTerminal() {
 		usePrettyLogging()
 	}
+
 	s := &nerd.SolverService{}
 	nerd.StartServer(s)
 }

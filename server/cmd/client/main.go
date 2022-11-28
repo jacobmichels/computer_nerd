@@ -12,6 +12,7 @@ import (
 
 func main() {
 	c := nerdv1connect.NewSolveServiceClient(http.DefaultClient, "http://localhost:8080")
+
 	res, err := c.Solve(context.Background(), &connect.Request[nerdv1.SolveRequest]{
 		Msg: &nerdv1.SolveRequest{
 			Rows: 3,
@@ -27,6 +28,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+
 	for _, index := range res.Msg.SolutionIndexes {
 		fmt.Printf("X:%d Y:%d\n", index.X, index.Y)
 	}
