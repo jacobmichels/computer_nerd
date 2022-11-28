@@ -22,5 +22,5 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build the Docker image
       run: |-
-        docker build server --file Dockerfile --tag jacobmichels/computer_nerd
+        docker build server/ --tag jacobmichels/computer_nerd
         docker push jacobmichels/computer_nerd
