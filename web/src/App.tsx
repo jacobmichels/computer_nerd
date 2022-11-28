@@ -20,6 +20,7 @@ export interface GridCell {
   value: string;
   isHighlighted: boolean;
 }
+
 export const gridState = atom({
   key: "gridState",
   default: Array(4).fill(Array(4).fill({ value: "BD", isHighlighted: false })),
