@@ -19,7 +19,3 @@ The server is stateless, so it can be easily run in something like kubernetes or
 The frontend is a react app made with with [chakra](https://chakra-ui.com/) components.
 
 The frontend gets a grid, buffer size, and desired path from the user and sends it to the backend. If the puzzle was solved by the backend, it will display the solution path through the grid in green.
-
-## Todo
-
-- set up ci (build frontend, build release binaries, deploy to gh-pages, remove old images from artifact registry)
