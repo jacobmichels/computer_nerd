@@ -3,7 +3,6 @@ package nerd
 import (
 	"context"
 	"errors"
-	"strings"
 
 	"github.com/rs/zerolog/log"
 
@@ -181,13 +180,22 @@ func renderPath(grid [][]string, p path) []string {
 }
 
 // Check if a rendered path contains the desired values
-func renderedPathContains(desired, actual []string) bool {
-	if len(desired) > len(actual) {
+func renderedPathContains(desired, path []string) bool {
+	if len(desired) != len(path) {
+		log.Warn().Int("desired_len", len(desired)).Int("path_len", len(path)).Msg("Lengths don't match")
 		return false
 	}
 
-	joinedDesired := strings.Join(desired, " ")
-	joinedActual := strings.Join(actual, " ")
+	for i, s := range desired {
+		// ignore wildcards
+		if s == "**" {
+			continue
+		}
 
-	return strings.Contains(joinedActual, joinedDesired)
+		if s != path[i] {
+			return false
+		}
+	}
+
+	return true
 }

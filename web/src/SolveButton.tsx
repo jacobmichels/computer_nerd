@@ -18,8 +18,13 @@ import {
   statusMessage,
 } from "./App";
 
+let baseUrl = "https://computer-nerd-gwksazschq-ue.a.run.app/";
+if (process.env.NODE_ENV === "development") {
+  baseUrl = "http://localhost:8080/";
+}
+
 const transport = createConnectTransport({
-  baseUrl: "https://computer-nerd-gwksazschq-ue.a.run.app/",
+  baseUrl: baseUrl,
   useBinaryFormat: true,
 });
 const client = createPromiseClient(SolveService, transport);

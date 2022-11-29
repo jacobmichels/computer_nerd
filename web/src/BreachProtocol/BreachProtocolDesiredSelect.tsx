@@ -29,6 +29,7 @@ export const BreachProtocolDesiredSelect: React.FC<
         <option value="55">55</option>
         <option value="1C">1C</option>
         <option value="7A">7A</option>
+        <option value="**">**</option>
       </Select>
     </>
   );
