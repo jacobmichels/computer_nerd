@@ -36,6 +36,7 @@ export const compressedGrid = selector({
         compressedGrid.push(col.value);
       }
     }
+
     return compressedGrid;
   },
 });
